@@ -5,7 +5,7 @@ import os
 
 # ✅ PERBAIKAN UTAMA:
 from src.env_qlearning import PenjualanEnv
-from env_qlearning import EnhancedPenjualanEnv, QLearningAgent
+from src.env_qlearning import EnhancedPenjualanEnv, QLearningAgent
 
 # ==================================================
 # ⚡️ 1. Load Model dan Data
