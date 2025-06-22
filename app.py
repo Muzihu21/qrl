@@ -24,4 +24,24 @@ agent.q_table = q_table
 # ⚡️ 2. Tampilan Streamlit
 # ==================================================
 st.title("💵 Simulasi Q-learning untuk Strategi Harga")
-st.write("Pilih st
+st.write("Pilih state awal dan dapatkan saran aksi dari model.")
+
+# Dropdown untuk pilih state awal
+state_choice = st.selectbox("Pilih State Awal:", list(state_idx.keys()))
+state_index = state_idx[state_choice]
+
+# Aksi yang disarankan model
+action_index = np.argmax(agent.q_table[state_index])
+recommended_action = env.actions[action_index]
+st.markdown(f"### 👉 Aksi Terbaik: **{recommended_action}**")
+
+# Simulasi langkah selanjutnya
+if st.button("Simulasi 1 Langkah"):
+    next_state, reward, done = env.step(recommended_action)
+    st.write(f"State Berikutnya: {next_state}")
+    st.write(f"Reward: {reward:.2f}")
+    st.write(f"Done: {done}")
+
+# Info Tambahan
+st.write("---")
+st.write("Original Profit Mean:", baseline_profit)
